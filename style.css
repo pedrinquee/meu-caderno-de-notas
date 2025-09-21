@@ -1,0 +1,198 @@
+:root {
+    --bg-color: #f7f3e9; 
+    --primary-color: #4a5759;
+    --secondary-color: #a4b2b5; 
+    --accent-color: #e56b6f; 
+    --note-bg: #fff8f0;
+    --border-color: #d1b8a5; 
+}
+
+body {
+    font-family: 'Caveat', cursive;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--note-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 8px 8px 0px var(--border-color);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+header h1 {
+    font-family: 'Kalam', cursive;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px dashed var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+.input-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#note-input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-family: 'Caveat', cursive;
+    background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+#note-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+button {
+    font-family: 'Kalam', cursive;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #c95a5f;
+    transform: translateY(-2px);
+}
+
+#notes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#notes-list li {
+    background-color: var(--bg-color);
+    border: 1px solid var(--secondary-color);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.checklist-btn {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checklist-btn::after {
+    content: '✓';
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+li.completed .checklist-btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+li.completed .checklist-btn::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+li.completed .note-text {
+    text-decoration: line-through;
+    color: var(--secondary-color);
+}
+
+.note-text {
+    flex-grow: 1;
+    font-size: 1.3rem;
+}
+
+.delete-btn {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.delete-btn:hover {
+    color: #9d3d40;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#clear-all-btn {
+    background-color: var(--primary-color);
+}
+
+#clear-all-btn:hover {
+    background-color: #3d4a4d;
+}
+
+#advice-container {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(10px);
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+#advice-container.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+#advice-container h2 {
+    font-family: 'Kalam', cursive;
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+#advice-text {
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
